@@ -1,0 +1,94 @@
+import java.util.Scanner;
+
+public class RockPaperScissors {
+    public static void main(String[] args) {
+        //Start or continue playing
+        System.out.println("You have 5 opportunities to defeat me in this game");
+        playGame();
+    }
+    public static void playGame() {
+        int playerOneScore = 0;
+        int playerTwoScore = 0;
+        for (int i = 0; i < 5; i++) {
+            Scanner play = new Scanner(System.in);
+            System.out.println("What do you choose: rock; paper or scissors?");
+            String playerOne = play.next();
+            String playerTwo = playerOutput();
+            System.out.println("Player two selected: " + playerTwo);
+            if (playerOne.equals("rock")) {
+                if (playerTwo.equals("scissors")) {
+                    playerOneScore++;
+                    youWin();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                } else if (playerTwo.equals("paper")) {
+                    playerTwoScore++;
+                    youLose();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                } else {
+                    itsATie();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                }
+            } else if (playerOne.equals("scissors")) {
+                if (playerTwo.equals("paper")) {
+                    playerOneScore++;
+                    youWin();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                } else if (playerTwo.equals("rock")) {
+                    playerTwoScore++;
+                    youLose();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                } else {
+                    itsATie();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                }
+            } else { //player one selected paper
+                if (playerTwo.equals("rock")) {
+                    playerOneScore++;
+                    youWin();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                } else if (playerTwo.equals("scissors")) {
+                    playerTwoScore++;
+                    youLose();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                } else {
+                    itsATie();
+                    System.out.println("Player One: " + playerOneScore + " Player Two: " + playerTwoScore);
+                }
+            }
+        }
+        System.out.println();
+        if (playerOneScore > playerTwoScore) {
+            System.out.println("Congratulations for winning the match");
+        } else if (playerTwoScore > playerOneScore) {
+            System.out.println("You lost. Maybe the next time");
+        } else {
+            System.out.println("How wonderful, it's a tie!");
+        }
+
+    }
+    public static String playerOutput () {
+            int playerTwoCode = (int) (Math.random() * 10);
+            if (playerTwoCode <= 2) {
+                String playerTwo = "rock";
+                return playerTwo;
+            } else if (playerTwoCode <= 6) {
+                String playerTwo = "paper";
+                return playerTwo;
+            } else {
+                String playerTwo = "scissors";
+                return playerTwo;
+            }
+    }
+    public static void youLose() {
+        System.out.println("You lose!");
+        System.out.println();
+    }
+    public static void youWin() {
+        System.out.println("You win!");
+        System.out.println();
+    }
+    public static void itsATie() {
+        System.out.println("It's a tie!");
+        System.out.println();
+    }
+}
